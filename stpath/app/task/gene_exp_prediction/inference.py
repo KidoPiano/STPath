@@ -111,19 +111,19 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--seed', type=int, default=1)
     parser.add_argument('--use_wandb', default=False)
-    parser.add_argument('--datasets', nargs='+', default=["LUNG"], help="LUNG, READ, HCC")
-    parser.add_argument('--source_dataroot', default="/home/ti.huang/project/single_cell_dataset/hest")
-    parser.add_argument('--save_dir', type=str, default="/home/ti.huang/project/stfm/stpath/finetune/gene_exp/test")
+    parser.add_argument('--datasets', nargs='+', default=["Breast"], help="LUNG, READ, HCC")
+    parser.add_argument('--source_dataroot', default="/mnt/net_sda/rst/M2OST/HER2+/embedding_yzy/20x_256px_0px_overlap/features_gigapath")
+    parser.add_argument('--save_dir', type=str, default="/mnt/sdb/yzy/MyFiles/predict_test")
     parser.add_argument('--feature_encoder', type=str, default='gigapath', help="uni_v1_official | resnet50_trunc | ciga | gigapath")
     parser.add_argument('--normalize_method', type=str, default="log1pv2")
     parser.add_argument('--exp_code', type=str, default="test_reproduce")
 
-    parser.add_argument('--checkpoint_dir', type=str, default='/home/ti.huang/project/stfm/stpath/backup')
+    parser.add_argument('--checkpoint_dir', type=str, default='/mnt/sdb/yzy/MyFiles/predict_test/checkpoint')
     parser.add_argument('--checkpoint_ids', nargs='+', type=str, default=['stfm'])
 
     # dataset hyperparameters
     parser.add_argument('--species', nargs='+', default=["human"], help="human | mouse | all")
-    parser.add_argument('--gene_voc_path', type=str, default="/home/ti.huang/STPath/utils_data/symbol2ensembl.json")
+    parser.add_argument('--gene_voc_path', type=str, default="/mnt/sdb/yzy/STPath/utils_data/symbol2ensembl.json")
 
     # training hyperparameters
     parser.add_argument('--device', type=int, default=0)
