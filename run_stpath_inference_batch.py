@@ -7,10 +7,12 @@ import glob
 from stpath.hest_utils.file_utils import read_assets_from_h5
 from stpath.app.pipeline.inference import STPathInference
 
+os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'expandable_segments:True'
+
 # --- 核心配置：模型和路径 ---
 gene_voc_path = '/mnt/sdb/yzy/STPath/utils_data/symbol2ensembl.json'
 model_weight_path = '/home/yzy/.cache/huggingface/hub/models--tlhuang--STPath/snapshots/3346881771f2ddb5575532df3df1b5477846d10a/stfm.pth'
-device = 0  # GPU 设备ID
+device = 6  # GPU 设备ID
 
 # --- 批量推理函数 ---
 def run_stpath_multi_dataset_inference(
@@ -107,7 +109,7 @@ def run_stpath_multi_dataset_inference(
 # --- 运行块 ---
 if __name__ == "__main__":
     # 根据你的描述设定的根目录
-    EMB_ROOT = "/mnt/net_sda/rst/Sub_dataset_for_spatial_cluster_yzy/embedding_results"
-    PRED_ROOT = "/mnt/net_sda/rst/Sub_dataset_for_spatial_cluster_yzy/prediction_results_STPath"
+    EMB_ROOT = "/mnt/net_sda/rst/Data_for_Survival_yzy/20x_256px_0px_overlap"
+    PRED_ROOT = "/mnt/net_sda/rst/STPath/MBC_survival_yzy/MBC_gigapath_STPath_pred"
 
     run_stpath_multi_dataset_inference(EMB_ROOT, PRED_ROOT)
